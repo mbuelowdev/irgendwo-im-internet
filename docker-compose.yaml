@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  IrgendwoImInternet:
+    container_name: IrgendwoImInternet
+    image: nginx-node19-vue-latest
+    volumes:
+      - ./:/var/www/html/site
+    ports:
+      - "80:80"
+      - "8080:8080"
