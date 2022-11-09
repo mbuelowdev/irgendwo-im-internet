@@ -2,15 +2,27 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Login from "@/views/Login.vue";
-import Dashboard from "@/views/Dashboard.vue";
+import Notifications from "@/views/Notifications.vue";
+import Cronjobs from "@/views/Cronjobs.vue";
+import Accounts from "@/views/Accounts.vue";
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'dashboard',
-    component: Dashboard
+    name: 'notifications',
+    component: Notifications
+  },
+  {
+    path: '/cronjobs',
+    name: 'cronjobs',
+    component: Cronjobs
+  },
+  {
+    path: '/accounts',
+    name: 'accounts',
+    component: Accounts
   },
   {
     path: '/login', // TODO(michael): lazy load EVERY PAGE BUT /LOGIN

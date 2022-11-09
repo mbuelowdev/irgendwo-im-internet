@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-navigation-drawer
-        v-model="drawer"
+        v-model="navigationDrawer.isCollapsed"
         app
-        dark
+        class="m3-nav-drawer"
     >
       <v-list-item>
         <v-list-item-content>
@@ -23,7 +23,7 @@
           nav
       >
         <v-list-item
-            v-for="item in items"
+            v-for="item in navigationDrawer.items"
             :key="item.title"
             :to="item.to"
             link
@@ -39,13 +39,16 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app dark>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+    <v-app-bar
+      app
+      class=""
+    >
+      <v-app-bar-nav-icon @click="navigationDrawer.isCollapsed = !navigationDrawer.isCollapsed"></v-app-bar-nav-icon>
 
       <v-toolbar-title><b>Irgendwo im Internet</b> | Discord Community</v-toolbar-title>
     </v-app-bar>
 
-    <v-main class="background-black">
+    <v-main class="">
       <v-container fluid>
         <slot/>
       </v-container>
@@ -56,12 +59,15 @@
 <script>
 
 export default {
-  data: () => ({}),
+  data: () => ({
+    navigationDrawer: {
+      isCollapsed: true,
+      items: [
+        { title: "Notifications", icon: "mdi-forum", to: "/" },
+        { title: "Cronjobs", icon: "mdi-forum", to: "/cronjobs" },
+        { title: "Accounts", icon: "mdi-forum", to: "/accounts" }
+      ]
+    }
+  }),
 }
 </script>
-
-<style>
-.background-black {
-  background: black;
-}
-</style>
